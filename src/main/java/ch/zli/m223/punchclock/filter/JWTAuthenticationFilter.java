@@ -1,7 +1,7 @@
-package ch.zli.m223.punchclock.security;
+package ch.zli.m223.punchclock.filter;
 
+import ch.zli.m223.punchclock.domain.ApplicationUser;
 import com.auth0.jwt.JWT;
-import ch.zli.m223.punchclock.domain.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,11 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static ch.zli.m223.punchclock.config.SecurityConstants.*;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static ch.zli.m223.punchclock.security.SecurityConstants.EXPIRATION_TIME;
-import static ch.zli.m223.punchclock.security.SecurityConstants.HEADER_STRING;
-import static ch.zli.m223.punchclock.security.SecurityConstants.SECRET;
-import static ch.zli.m223.punchclock.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
@@ -35,8 +32,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            User creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), User.class);
+            ApplicationUser creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), ApplicationUser.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

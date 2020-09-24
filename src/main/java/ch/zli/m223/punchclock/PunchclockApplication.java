@@ -7,13 +7,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class PunchclockApplication {
+
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(PunchclockApplication.class, args);
 	}
-
 
 }

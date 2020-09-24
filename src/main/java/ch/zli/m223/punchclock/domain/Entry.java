@@ -27,7 +27,10 @@ public class Entry {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
-    private User user;
+    private ApplicationUser user;
+    @ManyToOne
+    @JoinColumn(name="task_id", nullable=false)
+    private Task task;
 
     public Long getId() {
         return id;
@@ -51,5 +54,21 @@ public class Entry {
 
     public void setCheckOut(LocalDateTime checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public ApplicationUser getUser() {
+        return user;
+    }
+
+    public void setUser(ApplicationUser user) {
+        this.user = user;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 }

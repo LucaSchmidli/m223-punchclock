@@ -1,0 +1,50 @@
+{
+  "name": "RESTool App",
+  "favicon": "https://www.commoninja.com/public/favicon.ico",
+  "baseUrl": "http://localhost:8081",
+  "pages": [
+    {
+      "name": "Roles",
+      "id": "roles",
+      "description": "Rollen",
+      "methods": {
+        "getAll": {
+          "label": "Get All",
+          "dataPath": "items",
+          "url": "/roles",
+          "display": {
+            "type": "cards"
+          },
+          "fields": [
+            {
+              "name": "id",
+              "type": "text",
+              "label": "ID"
+            },
+            {
+              "name": "name",
+              "type": "text",
+              "label": "Name"
+            }
+          ]
+        },
+
+        "post": {
+          "url": "/roles",
+          "fields": [
+
+            {
+              "name": "name",
+              "label": "Name",
+              "type": "text"
+            }
+          ]
+        },
+        "delete": {
+          "url": "/roles/:id"
+        }
+      }
+
+    }
+  ]
+}

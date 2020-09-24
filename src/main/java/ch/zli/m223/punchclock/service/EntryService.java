@@ -25,8 +25,8 @@ public class EntryService {
     }
 
     public void updateEntry(Long entryId, Entry entryDetails){
-     entryDetails.setId(entryId);
-     entryRepository.saveAndFlush(entryDetails);
+        entryDetails.setId(entryId);
+        entryRepository.saveAndFlush(entryDetails);
     }
 
     public List<Entry> findAll() {

@@ -52,6 +52,7 @@ const renderEntries = () => {
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
         row.appendChild(createCell(new Date(entry.checkOut).toLocaleString()));
+        row.appendChild(createCell(("<button>Delete</button>")));
         display.appendChild(row);
     });
 };

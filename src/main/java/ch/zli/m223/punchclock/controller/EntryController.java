@@ -1,3 +1,4 @@
+
 package ch.zli.m223.punchclock.controller;
 
 import ch.zli.m223.punchclock.domain.Entry;
@@ -27,12 +28,12 @@ public class EntryController {
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteEntry(@PathVariable Long id){
-            entryService.deleteEntry(id);
+        entryService.deleteEntry(id);
     }
 
     @PutMapping("/{entryId}")
     public void  updateEmployee(@PathVariable Long entryId,@Valid @RequestBody Entry entryDetails)  {
-    entryService.updateEntry(entryId,entryDetails);
+        entryService.updateEntry(entryId,entryDetails);
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
