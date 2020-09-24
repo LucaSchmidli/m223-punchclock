@@ -1,13 +1,16 @@
 # M223: Punchclock
-Dies ist eine Beispielapplikation für das Modul M223.
+Das ist die Erweiterung des Beispiel Projektes Punchclock. Es wurden folgende Dinge geändert: 
+- Authentifizerung mittels JWT Token hinzugefügt.
+- Neue Entität Role hinzugefügt 
+- Neue Entität Task hinzugefügt 
 
-## Loslegen
-Folgende Schritte befolgen um loszulegen:
-1. Sicherstellen, dass JDK 12 installiert und in der Umgebungsvariable `path` definiert ist.
-1. Ins Verzeichnis der Applikation wechseln und über die Kommandozeile mit `./gradlew bootRun` oder `./gradlew.bat bootRun` starten
-1. Unittest mit `./gradlew test` oder `./gradlew.bat test` ausführen.
-1. Ein ausführbares JAR kann mit `./gradlew bootJar` oder `./gradlew.bat bootJar` erstellt werden.
+## Starten
+Bevor man die Applikation startet sollte man überprüfen ob die JDK 12 installiert ist.
+Dannach geht man ins Stammverzeichniss der App, öffnet das Terminal und tippt folgenden Befehl ein: `./gradlew bootRun`
 
-Folgende Dienste stehen während der Ausführung im Profil `dev` zur Verfügung:
-- REST-Schnittstelle der Applikation: http://localhost:8081
-- Dashboard der H2 Datenbank: http://localhost:8081/h2-console
+## Funktionen und Nutzerschnittstellen
+- Unter http://localhost/sign-up.html befindet sich das Registrierungsformular
+- Unter http://localhost/login.html befindet sich das Loginformular
+- Unter http://localhost/user.html erreicht man die Nutzerschnitstelle für die User
+- Unter http://localhost/role.html erreicht man die Nutzerschnitstelle für die Rollen
+- Unter http://localhost/index.html erreicht man die Nutzerschnitstelle für die Entries
