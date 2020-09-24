@@ -21,23 +21,37 @@ public class RoleController {
     public RoleController(RoleService roleService) {
         this.roleService = roleService;
     }
-
+    /**
+     *
+     * Gibt alle Rollen zurück
+     *
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Role> getAllRoles() {
         return roleService.findAll();
     }
-
+    /** Löscht eine Rolle
+     * @param id Die ID der Rolle.
+     *
+     */
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteRole(@PathVariable Long id){
         roleService.deleteRole(id);
     }
-
+    /** Updatet eine Rolle
+     * @param id Die ID der Rolle.
+     * @param roleDetails Die Details der Rolle.
+     */
     @PutMapping("/{roleId}")
     public void  updateRole(@PathVariable Long roleId,@Valid @RequestBody Role roleDetails)  {
         roleService.updateRole(roleId,roleDetails);
     }
+    /** Erstellt eine Rolle
+     * @param role Die einzutragende Rolle.
+     *
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Role createRole(@Valid @RequestBody Role role    ) {

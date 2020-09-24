@@ -39,14 +39,12 @@
         });
     });
 </script>
-<h1>Nutzer verwalten</h1>
+<h1>Rollen verwalten</h1>
 <table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Name</th>
-
-
     </tr>
     </thead>
     <tbody id="entryDisplay">
@@ -58,11 +56,7 @@
 <script>
 
     const URL = 'http://localhost:8081';
-    let users = [];
-
-    const dateAndTimeToDate = (dateString, timeString) => {
-        return new Date(`${dateString}T${timeString}`).toISOString();
-    };
+    let roles = [];
 
 
 
@@ -71,7 +65,7 @@
             method: 'GET'
         }).then((result) => {
             result.json().then((result) => {
-                users = result;
+                roles = result;
                 renderEntries();
             });
         });
@@ -87,11 +81,10 @@
     const renderEntries = () => {
         const display = document.querySelector('#entryDisplay');
         display.innerHTML = '';
-        users.forEach((entry) => {
+        roles.forEach((entry) => {
             const row = document.createElement('tr');
             row.appendChild(createCell(entry.id));
             row.appendChild(createCell(entry.name));
-
             let x = row.appendChild(createCell(0));
             x.innerHTML = '<button onclick=deleteEntry(' + entry.id + ')>Del</button>';
             row.setAttribute("id", entry.id)

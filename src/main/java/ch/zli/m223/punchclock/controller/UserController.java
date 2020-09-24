@@ -24,29 +24,43 @@ public class UserController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userService = userService;
     }
+    /** Gibt alle User zurück
+     *
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<ApplicationUser> getAllEntries() {
         return userService.findAll();
     }
-
+    /** Erstellt einen neuen Nutzer
+     * @param user Der User der Erstellt werden soll.
+     */
     @PostMapping("/sign-up")
     public void signUp(@RequestBody ApplicationUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         applicationUserRepository.save(user);
+
     }
+    /** Löscht einen user
+     * @param id Die id des user
+     */
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteEntry(@PathVariable Long id){
         userService.deleteUser(id);
     }
-
+    /** Gibt einen User zurück
+     * @param id Die id des Users
+     */
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<ApplicationUser> getSingle(@PathVariable Long id){
        return userService.getUser(id);
     }
-
+    /** Updatet einen User
+     * @param id Die id des Users
+     * @param userDetails Die neuen Nutzerdaten.
+     */
     @PutMapping("/{userId}")
     public void  updateEmployee(@PathVariable Long userId,@Valid @RequestBody ApplicationUser userDetails)  {
         userService.updateUser(userId,userDetails);

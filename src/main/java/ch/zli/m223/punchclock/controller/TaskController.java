@@ -19,23 +19,33 @@ public class TaskController {
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
-
+    /** Gibt alle Tasks zurück
+     *
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Task> getAllTasks() {
         return taskService.findAll();
     }
-
+    /** Löscht eine Task
+     * @param id Die id der Task
+     */
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTask(@PathVariable Long id){
         taskService.deleteTask(id);
     }
-
+    /** Updatet eine Task
+     * @param id Die id der Task
+     * @param taskDetails Die Details der Task
+     */
     @PutMapping("/{taskId}")
     public void  updateTask(@PathVariable Long taskId,@Valid @RequestBody Task taskDetails)  {
         taskService.updateTask(taskId,taskDetails);
     }
+    /** Erstellt eine Task
+     * @param task Die Task
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Task createTask(@Valid @RequestBody Task task) {
